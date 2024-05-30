@@ -24,9 +24,9 @@ from patho_pix.io import load_mask, load_wsi
 # ---------------------------------------------------- #
 # Download links
 url_img = "http://glioblastoma.alleninstitute.org/cgi-bin/imageservice?" + \
-        "path=/external/gbm/prod16/0534336905/0534336905_boundary.aff&mime=1&fileout=266289986_2.jpg&zoom=9&top=22304&left=25024&width=15040&height=18080"
+          "path=/external/gbm/prod16/0534336905/0534336905_boundary.aff&mime=1&fileout=266289986_2.jpg&zoom=9&top=22304&left=25024&width=15040&height=18080"
 url_mask = "http://glioblastoma.alleninstitute.org/cgi-bin/imageservice?" + \
-        "path=/external/gbm/prod16/0534336761/0534336761_annotation.aff&mime=1&fileout=265854792_1.mask.jpg&zoom=9&top=23424&left=18112&width=15104&height=18176"
+           "path=/external/gbm/prod16/0534336761/0534336761_annotation.aff&mime=1&fileout=265854792_1.mask.jpg&zoom=9&top=23424&left=18112&width=15104&height=18176"
 path_img = None
 path_mask = None
 
