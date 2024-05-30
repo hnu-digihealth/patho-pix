@@ -36,6 +36,7 @@ path_mask = None
 debug_path_img = "../data/dummy_wsi_01.image.jpg"
 debug_path_mask = "../data/dummy_wsi_01.mask.jpg"
 
+
 # ---------------------------------------------------- #
 #                   Unittest: Tiling                   #
 # ---------------------------------------------------- #
@@ -67,11 +68,11 @@ class TileTEST(unittest.TestCase):
         wsi, path_tiles_wsi = load_wsi(self.path_img)
         tile_wsi(wsi)
 
-    # # -------------------------------------------------#
-    # #                Test: Mask Loading               #
-    # # -------------------------------------------------#
-    # def test_load_mask(self):
-    #     print(os.path.exists(self.path_mask))
-    #     mask, path_tiles_mask = load_mask(self.path_mask)
-    #     self.assertTrue(np.array_equal(mask.level_dimensions(level=0),
-    #                                   (15104, 18176)))
+    # -------------------------------------------------#
+    #                Test: Mask Loading               #
+    # -------------------------------------------------#
+    def test_load_mask(self):
+        print(os.path.exists(self.path_mask))
+        mask, path_tiles_mask = load_mask(self.path_mask)
+        self.assertTrue(np.array_equal(mask.level_dimensions(level=0),
+                                      (15104, 18176)))
