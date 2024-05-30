@@ -10,8 +10,10 @@ from histolab.masks import TissueMask
 from histolab.tiler import GridTiler
 
 
+from patho_pix.utils import AwesomeTiler
+
 # ---------------------------------------------------- #
-#           Apply Tiling base on Tissue Mask           #
+#     Apply tiling base on Tissue Mask - Only Image    #
 # ---------------------------------------------------- #
 def tile_wsi(wsi, tile_size=(1024, 1024)):
     # Initialize Tiler
@@ -23,5 +25,22 @@ def tile_wsi(wsi, tile_size=(1024, 1024)):
                             )
     # extract tile
     wsi_tiler.extract(wsi,
+                      extraction_mask=TissueMask()
+                      )
+
+
+# ---------------------------------------------------- #
+#    Apply tiling base on Tissue Mask - Image + Mask   #
+# ---------------------------------------------------- #
+def tile_wsi_mask(wsi_img, wsi_label, tile_size=(1024, 1024)):
+    # Initialize Tiler
+    wsi_tiler = AwesomeTiler(tile_size=tile_size,
+                             check_tissue=True,
+                             tissue_percent=80.0,
+                             prefix="patho-fix.",
+                             suffix=".png"
+                            )
+    # extract tile
+    wsi_tiler.extract(wsi_img, wsi_label,
                       extraction_mask=TissueMask()
                       )
