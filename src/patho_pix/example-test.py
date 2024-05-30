@@ -40,8 +40,11 @@
 
 # print('END')
 
+# Standard Library
 from io import BytesIO
-from PIL import ImageCms, Image
+
+# Third Party
+from PIL import Image, ImageCms
 
 test_image_path = 'media/test-images/266289986_2@small.tiff'
 image = Image.open(test_image_path)
