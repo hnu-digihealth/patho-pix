@@ -13,6 +13,9 @@ dependencies = [
     "large-image-source-openjpeg>=1.28.2",
     "pandas>=2.0.3",
     "numpy>=1.24.4",
+    "opencv-python>=4.9.0.80",
+    "torch>=2.3.0",
+    "torchvision>=0.18.0",
 ]
 requires-python = ">=3.8,<=3.11"
 readme = "README.md"
