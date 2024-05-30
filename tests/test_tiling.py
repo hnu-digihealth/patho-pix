@@ -12,7 +12,6 @@ import tempfile
 import unittest
 
 # Third Party
-import numpy as np
 import requests
 
 # patho_pix
@@ -69,7 +68,6 @@ class TileTEST(unittest.TestCase):
         convert_jpeg_to_tiff(self.path_mask, self.path_mask.replace(".jpg", ".tiff"))
         self.path_img = self.path_img.replace(".jpg", ".tiff")
         self.path_mask = self.path_mask.replace(".jpg", ".tiff")
-
 
     # ------------------------------------------------ #
     #                Test: Image Tiling                #

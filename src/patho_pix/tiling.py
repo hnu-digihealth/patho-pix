@@ -9,8 +9,9 @@
 from histolab.masks import TissueMask
 from histolab.tiler import GridTiler
 
-
+# patho_pix
 from patho_pix.utils import AwesomeTiler
+
 
 # ---------------------------------------------------- #
 #     Apply tiling base on Tissue Mask - Only Image    #
