@@ -1,0 +1,88 @@
+name: testing
+
+on:
+  # Triggers the workflow on push or pull request events, but only for the main branch
+  push:
+    branches: [ main, development ]
+  pull_request:
+    branches: [ main, development ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  isort:
+    runs-on: ubuntu-latest
+    name: Import Order
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up PDM
+        uses: pdm-project/setup-pdm@v4
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          pdm sync -d
+      - name: isort Lint
+        run: |
+          pdm sort
+
+  flake8-lint:
+    runs-on: ubuntu-latest
+    name: Lint
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up PDM
+        uses: pdm-project/setup-pdm@v4
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          pdm sync -d
+      - name: flake8 Lint
+        run: |
+          pdm lint
+
+  testing:
+    name: Test
+    needs: [flake8-lint, isort]
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11', '3.12']
+        os: [ubuntu-latest, macOS-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up PDM
+        uses: pdm-project/setup-pdm@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run Tests
+        run: |
+          pdm test
+
+  coverage:
+    needs: testing
+    name: Coverage
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up PDM
+      uses: pdm-project/setup-pdm@v4
+      with:
+        python-version: '3.12'
+    - name: Install dependencies
+      run: |
+        pdm sync -d
+    - name: Generate coverage
+      run: |
+        pdm cov_report
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v4
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: ./coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: true
+        verbose: true

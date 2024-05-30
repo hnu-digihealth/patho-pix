@@ -1,0 +1,46 @@
+[project]
+name = "patho-pix"
+version = "0.1.0"
+description = "Preprocessing framework for pathological images"
+authors = []
+dependencies = []
+requires-python = ">=3.12"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[tool.pdm]
+distribution = true
+
+[tool.pdm.dev-dependencies]
+testing = [
+    "pytest>=8.2.0",
+    "coverage>=7.5.0",
+    "flake8>=7.0.0",
+]
+dev = [
+    "pre-commit>=3.7.0",
+    "notebook>=7.1.3",
+    "isort>=5.13.2",
+]
+
+[tool.pdm.scripts]
+test = "pdm run -v pytest tests"
+lint = "pdm run -v flake8 --ignore=E124,E127,E128,E701,E731,W503 --max-line-length 200 src tests"
+sort = "pdm run -v isort --check-only src tests"
+apply_sort = "pdm run -v isort src tests"
+cov_report = { shell = "pdm run -v coverage run -m pytest tests && pdm run coverage xml && pdm run coverage report" }
+check_pre_commit = "pdm run pre-commit run --all-files"
+# run prior to tests
+pre_test = "pdm install"
+
+[tool.isort]
+src_paths = ["src", "tests"]
+known_first_party = "cubats"
+import_heading_stdlib = "Standard Library"
+import_heading_thirdparty = "Third Party"
+import_heading_firstparty = "patho_pix"
