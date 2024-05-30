@@ -27,7 +27,7 @@ class NormalizationTests(unittest.TestCase):
             with open(path_img, "wb") as fd:
                 fd.write(response.content)
                 self.test_img = Image.open(path_img)
-                self.test_img.save("/workspaces/patho-pix/output/test_out/test_img.tiff")
+                self.test_img.save("./output/test_out/test_img.tiff")
 
     def test_normalize_tile_reinhard(self):
         # Test Reinhard stain normalization
@@ -35,11 +35,11 @@ class NormalizationTests(unittest.TestCase):
         print(type(self.normalized_tile))
         self.assertIsInstance(self.normalized_tile, Image.Image)
         # Save image in output/test_out for inspection
-        self.normalized_tile.save("/workspaces/patho-pix/output/test_out/normalized_tile_reinhard.tiff")
+        self.normalized_tile.save("./output/test_out/normalized_tile_reinhard.tiff")
 
     def test_normalize_tile_macenko(self):
         # Test Macenko stain normalization
         self.normalized_tile = normalize_tile_macenko(self.test_img)
         self.assertIsInstance(self.normalized_tile, Image.Image)
         # Save image in output/test_out for inspection
-        self.normalized_tile.save("/workspaces/patho-pix/output/test_out/normalized_tile_macenko.tiff")
+        self.normalized_tile.save("./output/test_out/normalized_tile_macenko.tiff")

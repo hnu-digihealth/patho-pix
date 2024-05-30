@@ -23,7 +23,7 @@ if response.status_code == 200:
     with open(path_img, "wb") as fd:
         fd.write(response.content)
         target_img = Image.open(path_img)
-        target_img.save("/workspaces/patho-pix/output/test_out/target_img.tiff")
+        target_img.save("./output/test_out/target_img.tiff")
 else:
     print("Target Image could not be downloaded, please check if the link is valid.")
 
