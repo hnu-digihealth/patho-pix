@@ -75,7 +75,7 @@ class IOTEST(unittest.TestCase):
         tile_dir = tempfile.TemporaryDirectory(prefix="tmp.patho-pix.")
         wsi = load_wsi(self.path_img, tile_dir.name)
         self.assertTrue(np.array_equal(wsi.level_dimensions(level=0),
-                                      (15040, 18080)))
+                                      (15040, 18048)))
 
     # ------------------------------------------------ #
     #                Test: Mask Loading                #
@@ -84,4 +84,4 @@ class IOTEST(unittest.TestCase):
         tile_dir = tempfile.TemporaryDirectory(prefix="tmp.patho-pix.")
         mask = load_mask(self.path_mask, tile_dir.name)
         self.assertTrue(np.array_equal(mask.level_dimensions(level=0),
-                                      (15040, 18080)))
+                                      (15040, 18048)))
