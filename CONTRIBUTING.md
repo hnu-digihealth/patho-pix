@@ -40,4 +40,4 @@ This repository uses pre-commit hooks to run some workflows before committing to
 
 Run `pdm run pre-commit install` initially to enable the pre-commit script on commits.
 
-Afterwards, all files can be checked with `pdm run check-pre-commit`.
+Afterwards, all files can be checked with `pdm run check_pre_commit`.
