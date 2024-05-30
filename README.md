@@ -25,7 +25,8 @@ Install OpenSlide:
 Mac (with homebrew): `brew install openslide`.
 
 Install `pdm`.
-Then run `pdm install --verbose`.
+Then run `pdm install --verbose`.  
+Then install patho-pix: `pip install patho_pix`.
 
 ## For VSCode
 
