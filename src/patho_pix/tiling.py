@@ -5,8 +5,9 @@
 # ---------------------------------------------------- #
 #                   Library imports                    #
 # ---------------------------------------------------- #
-from histolab.tiler import GridTiler
+# Third Party
 from histolab.masks import TissueMask
+from histolab.tiler import GridTiler
 
 
 # ---------------------------------------------------- #
