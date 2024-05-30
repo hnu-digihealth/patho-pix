@@ -19,6 +19,7 @@ import requests
 # Internal libraries
 from patho_pix.io import load_mask, load_wsi
 
+
 # ---------------------------------------------------- #
 #                    Configuration                     #
 # ---------------------------------------------------- #
