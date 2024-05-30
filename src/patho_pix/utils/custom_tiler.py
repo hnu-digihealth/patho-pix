@@ -136,6 +136,7 @@ class AwesomeTiler(Tiler):
             metadata[tile_filename] = tile.tissue_ratio
 
         logger.info(f"{tiles_counter} Grid Tiles have been saved.")
+        return metadata
 
     @property
     def tile_size(self) -> Tuple[int, int]:
