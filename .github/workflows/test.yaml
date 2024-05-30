@@ -74,12 +74,12 @@ jobs:
       uses: pdm-project/setup-pdm@v4
       with:
         python-version: '3.8'
-    - name: Install dependencies
-      run: |
-        pdm sync -d
     - name: Install openslide
       run: |
         sudo apt -y install libvips-dev
+    - name: Install dependencies
+      run: |
+        pdm sync -d
     - name: Generate coverage
       run: |
         pdm cov_report
