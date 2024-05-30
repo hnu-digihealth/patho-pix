@@ -18,7 +18,7 @@ import requests
 # patho_pix
 # Internal libraries
 from patho_pix.io import load_mask, load_wsi
-
+from patho_pix.utils import convert_jpeg_to_tiff
 
 # ---------------------------------------------------- #
 #                    Configuration                     #
@@ -30,7 +30,7 @@ url_mask = "https://glioblastoma.alleninstitute.org/cgi-bin/imageservice?path=" 
 url_img = "https://glioblastoma.alleninstitute.org/cgi-bin/imageservice?path=" + \
           "/external/gbm/prod0/0534338971/0534338971.aff&mime=1&fileout=100125374_2." + \
           "jpg&zoom=9&top=20608&left=55168&width=15040&height=18048"
-          
+
 path_img = None
 path_mask = None
 
@@ -67,7 +67,6 @@ class IOTEST(unittest.TestCase):
         convert_jpeg_to_tiff(self.path_mask, self.path_mask.replace(".jpg", ".tiff"))
         self.path_img = self.path_img.replace(".jpg", ".tiff")
         self.path_mask = self.path_mask.replace(".jpg", ".tiff")
-
 
     # ------------------------------------------------ #
     #               Test: Image Loading                #

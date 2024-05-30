@@ -5,26 +5,20 @@
 # ---------------------------------------------------- #
 #                   Library imports                    #
 # ---------------------------------------------------- #
-# Third Party
-import csv
+# Standard Library
 import logging
 import os
-from abc import abstractmethod
-from itertools import zip_longest
-from typing import Iterable, List, Optional, Protocol, Tuple, Union, runtime_checkable
+from typing import Tuple
 
+# Third Party
 import numpy as np
-import PIL
-
-from histolab.tiler import Tiler
-from histolab.exceptions import LevelError, TileSizeOrCoordinatesError
+from histolab.exceptions import TileSizeOrCoordinatesError
 from histolab.masks import BiggestTissueBoxMask, BinaryMask
-from histolab.scorer import Scorer
 from histolab.slide import Slide
 from histolab.tile import Tile
+from histolab.tiler import Tiler
 from histolab.types import CoordinatePair
 from histolab.util import (
-    random_choice_true_mask2d,
     rectangle_to_mask,
     region_coordinates,
     regions_from_binary_mask,
@@ -35,6 +29,7 @@ from histolab.util import (
 logger = logging.getLogger("tiler")
 
 COORDS_WITHIN_EXTRACTION_MASK_THRESHOLD = 0.8
+
 
 # ---------------------------------------------------- #
 #            Custom GridTiler: AwesomeTiler            #
@@ -369,7 +364,6 @@ class AwesomeTiler(Tiler):
             if not self.check_tissue or tile.has_enough_tissue(self.tissue_percent):
                 yield tile, coords
 
-
     # Domi Function - hacking with no docs
     def _tile_mask_extract(self, slide: Slide, coords):
         tile = slide.extract_tile(
@@ -379,5 +373,3 @@ class AwesomeTiler(Tiler):
             level=self.level if self.mpp is None else None,
         )
         return tile
-
-
