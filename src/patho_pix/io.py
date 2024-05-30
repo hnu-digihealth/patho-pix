@@ -7,6 +7,7 @@
 # -----------------------------------------------------#
 # Standard Library
 import tempfile
+import os
 
 # Third Party
 from histolab.slide import Slide
@@ -15,34 +16,30 @@ from histolab.slide import Slide
 # -----------------------------------------------------#
 #                    Image Loader                      #
 # -----------------------------------------------------#
-def load_wsi(path, use_largeimage=True):
-    # Create temporary directory for WSI scan tiles later
-    pathdir_tiles_img = tempfile.TemporaryDirectory(
-        prefix="patho-pix.tmp.", suffix=".tiles_img"
-    )
+def load_wsi(path_slide, path_tile_dir, use_largeimage=True):
+    # Create path tile directory
+    if not os.path.exists(path_tile_dir) : os.mkdir(path_tile_dir)
     # Load WSI scan via histolab
     wsi_slide = Slide(
         path=path,
-        processed_path=pathdir_tiles_img.name,
+        processed_path=path_tile_dir,
         use_largeimage=use_largeimage
     )
     # Return histolab WSI
-    return wsi_slide, pathdir_tiles_img
+    return wsi_slide
 
 
 # -----------------------------------------------------#
 #                     Mask Loader                      #
 # -----------------------------------------------------#
-def load_mask(path, use_largeimage=True):
-    # Create temporary directory for WSI mask tiles later
-    pathdir_tiles_mask = tempfile.TemporaryDirectory(
-        prefix="patho-pix.tmp.", suffix=".tiles_mask"
-    )
+def load_mask(path, path_tile_dir, use_largeimage=True):
+    # Create path tile directory
+    if not os.path.exists(path_tile_dir) : os.mkdir(path_tile_dir)
     # Load WSI mask via histolab
     wsi_slide = Slide(
         path=path,
-        processed_path=pathdir_tiles_mask.name,
+        processed_path=path_tile_dir,
         use_largeimage=use_largeimage
     )
     # Return histolab WSI
-    return wsi_slide, pathdir_tiles_mask
+    return wsi_slide
