@@ -48,6 +48,11 @@ image = Image.open(test_image_path)
 fromProfile = ImageCms.getOpenProfile(BytesIO(image.info['icc_profile']))
 toProfile = ImageCms.createProfile('sRGB')
 intent = ImageCms.getDefaultIntent(fromProfile)
-ImageCms.profileToProfile(
-  image, fromProfile, toProfile, intent, 'RGBA', True, 0
-)
+# ImageCms.profileToProfile(
+#   image, fromProfile, toProfile, intent, 'RGBA', True, 0
+# )
+
+image.show()
+image.save('output/example-test/test.tiff')
+
+print('END')
