@@ -50,13 +50,16 @@ jobs:
     strategy:
       matrix:
         python-version: ['3.8', '3.11',]
-        os: [ubuntu-latest, macOS-latest, windows-latest]
+        os: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v4
       - name: Set up PDM
         uses: pdm-project/setup-pdm@v4
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Install openslide
+        run: |
+          sudo apt -y install libvips-dev
       - name: Run Tests
         run: |
           pdm test
@@ -70,7 +73,10 @@ jobs:
     - name: Set up PDM
       uses: pdm-project/setup-pdm@v4
       with:
-        python-version: '3.11'
+        python-version: '3.8'
+    - name: Install openslide
+      run: |
+        sudo apt -y install libvips-dev
     - name: Install dependencies
       run: |
         pdm sync -d

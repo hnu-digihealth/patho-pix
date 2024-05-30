@@ -5,7 +5,7 @@
 groups = ["default", "dev", "testing"]
 strategy = ["cross_platform", "inherit_metadata"]
 lock_version = "4.4.1"
-content_hash = "sha256:b583508fe417ece10b897b52b1f348155953cd0bc4bfba5ada8e4ad9266e6f5f"
+content_hash = "sha256:e6bc9cb408005d8be07011a983507b5bfa334fdbbc9563d90055ca86e262e596"
 
 [[package]]
 name = "anyio"
@@ -187,6 +187,17 @@ dependencies = [
 files = [
     {file = "bleach-6.1.0-py3-none-any.whl", hash = "sha256:3225f354cfc436b9789c66c4ee030194bee0568fbf9cbdad3bc8b5c26c5f12b6"},
     {file = "bleach-6.1.0.tar.gz", hash = "sha256:0a31f1837963c41d46bbf1331b8778e1308ea0791db03cc4e7357b97cf42a8fe"},
+]
+
+[[package]]
+name = "cachetools"
+version = "5.3.3"
+requires_python = ">=3.7"
+summary = "Extensible memoizing collections and decorators"
+groups = ["default"]
+files = [
+    {file = "cachetools-5.3.3-py3-none-any.whl", hash = "sha256:0abad1021d3f8325b2fc1d2e9c8b9c9d57b04c3932657a72465447332c24d945"},
+    {file = "cachetools-5.3.3.tar.gz", hash = "sha256:ba29e2dfa0b8b556606f097407ed1aa62080ee108ab0dc5ec9d6a723a007d105"},
 ]
 
 [[package]]
@@ -1046,6 +1057,24 @@ files = [
 ]
 
 [[package]]
+name = "large-image"
+version = "1.28.2"
+requires_python = ">=3.8"
+summary = "Python modules to work with large, multiresolution images."
+groups = ["default"]
+dependencies = [
+    "Pillow",
+    "cachetools",
+    "numpy",
+    "palettable",
+    "typing-extensions",
+]
+files = [
+    {file = "large-image-1.28.2.tar.gz", hash = "sha256:4fbcaf5714dc932d591369cdd776b7f8bb168ecacbede0bbc27ba5ffd8d9955f"},
+    {file = "large_image-1.28.2-py3-none-any.whl", hash = "sha256:c46a4904798bda51a101e49e45f7baa4f823032861cdccf5113c2cd79ae0f5ce"},
+]
+
+[[package]]
 name = "markupsafe"
 version = "2.1.5"
 requires_python = ">=3.7"
@@ -1337,6 +1366,17 @@ groups = ["default", "dev", "testing"]
 files = [
     {file = "packaging-24.0-py3-none-any.whl", hash = "sha256:2ddfb553fdf02fb784c234c7ba6ccc288296ceabec964ad2eae3777778130bc5"},
     {file = "packaging-24.0.tar.gz", hash = "sha256:eb82c5e3e56209074766e6885bb04b8c38a0c015d0a30036ebe7ece34c9989e9"},
+]
+
+[[package]]
+name = "palettable"
+version = "3.3.3"
+requires_python = ">=3.7"
+summary = "Color palettes for Python"
+groups = ["default"]
+files = [
+    {file = "palettable-3.3.3-py2.py3-none-any.whl", hash = "sha256:74e9e7d7fe5a9be065e02397558ed1777b2df0b793a6f4ce1a5ee74f74fb0caa"},
+    {file = "palettable-3.3.3.tar.gz", hash = "sha256:094dd7d9a5fc1cca4854773e5c1fc6a315b33bd5b3a8f47064928facaf0490a8"},
 ]
 
 [[package]]
@@ -2241,8 +2281,7 @@ name = "typing-extensions"
 version = "4.12.0"
 requires_python = ">=3.8"
 summary = "Backported and Experimental Type Hints for Python 3.8+"
-groups = ["dev"]
-marker = "python_version < \"3.11\""
+groups = ["default", "dev"]
 files = [
     {file = "typing_extensions-4.12.0-py3-none-any.whl", hash = "sha256:b349c66bea9016ac22978d800cfff206d5f9816951f12a7d0ec5578b0a819594"},
     {file = "typing_extensions-4.12.0.tar.gz", hash = "sha256:8cbcdc8606ebcb0d95453ad7dc5065e6237b6aa230a31e81d0f440c30fed5fd8"},
