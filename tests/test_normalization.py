@@ -1,9 +1,15 @@
+# Standard Library
+import os
 import tempfile
 import unittest
-from PIL import Image
-import os
+
+# Third Party
 import requests
-from patho_pix.normalization import normalize_tile_reinhard, normalize_tile_macenko
+from PIL import Image
+
+# patho_pix
+from patho_pix.normalization import (normalize_tile_macenko,
+                                     normalize_tile_reinhard)
 
 test_img_url = 'https://user-images.githubusercontent.com/31658006/212924179-a85573b6-1bb3-4f9b-a8ab-00a26b1d652e.png'
 

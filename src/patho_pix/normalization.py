@@ -1,9 +1,12 @@
-import requests
-import tempfile
+# Standard Library
 import os
-from PIL import Image
+import tempfile
 
-from histolab.stain_normalizer import ReinhardStainNormalizer, MacenkoStainNormalizer
+# Third Party
+import requests
+from histolab.stain_normalizer import (MacenkoStainNormalizer,
+                                       ReinhardStainNormalizer)
+from PIL import Image
 
 # D Download link for target image
 img_url = "https://user-images.githubusercontent.com/31658006/212924301-c80f454e-f99a-4479-9852-6ef988c078aa.png"
