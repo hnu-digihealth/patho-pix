@@ -16,12 +16,12 @@ from histolab.slide import Slide
 # -----------------------------------------------------#
 #                    Image Loader                      #
 # -----------------------------------------------------#
-def load_wsi(path_slide, path_tile_dir, use_largeimage=True):
+def load_wsi(path_slide, path_tile_dir, use_largeimage=False):
     # Create path tile directory
     if not os.path.exists(path_tile_dir) : os.mkdir(path_tile_dir)
     # Load WSI scan via histolab
     wsi_slide = Slide(
-        path=path,
+        path=path_slide,
         processed_path=path_tile_dir,
         use_largeimage=use_largeimage
     )
@@ -32,12 +32,12 @@ def load_wsi(path_slide, path_tile_dir, use_largeimage=True):
 # -----------------------------------------------------#
 #                     Mask Loader                      #
 # -----------------------------------------------------#
-def load_mask(path, path_tile_dir, use_largeimage=True):
+def load_mask(path_slide, path_tile_dir, use_largeimage=False):
     # Create path tile directory
     if not os.path.exists(path_tile_dir) : os.mkdir(path_tile_dir)
     # Load WSI mask via histolab
     wsi_slide = Slide(
-        path=path,
+        path=path_slide,
         processed_path=path_tile_dir,
         use_largeimage=use_largeimage
     )

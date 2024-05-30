@@ -24,12 +24,13 @@ from patho_pix.io import load_mask, load_wsi
 #                    Configuration                     #
 # ---------------------------------------------------- #
 # Download links
-url_img = "http://glioblastoma.alleninstitute.org/cgi-bin/imageservice?" + \
-          "path=/external/gbm/prod16/0534336905/0534336905_boundary.aff&mime=1&fileout=266289986_2.jpg&zoom=9" + \
-          "&top=22304&left=25024&width=15040&height=18080"
-url_mask = "http://glioblastoma.alleninstitute.org/cgi-bin/imageservice?" + \
-           "path=/external/gbm/prod16/0534336761/0534336761_annotation.aff&mime=1&fileout=265854792_1.mask.jpg" +\
-           "&zoom=9&top=23424&left=18112&width=15104&height=18176"
+url_mask = "https://glioblastoma.alleninstitute.org/cgi-bin/imageservice?path=" + \
+           "/external/gbm/prod0/0534338827/0534338827_annotation.aff&mime=1" + \
+           "&fileout=100122048_1.jpg&zoom=9&top=20224&left=57888&width=15040&height=18048"
+url_img = "https://glioblastoma.alleninstitute.org/cgi-bin/imageservice?path=" + \
+          "/external/gbm/prod0/0534338971/0534338971.aff&mime=1&fileout=100125374_2." + \
+          "jpg&zoom=9&top=20608&left=55168&width=15040&height=18048"
+          
 path_img = None
 path_mask = None
 
@@ -61,21 +62,27 @@ class IOTEST(unittest.TestCase):
             self.path_mask = os.path.join(self.tmp_data.name, "mask.jpg")
             with open(self.path_mask, "wb") as fd:
                 fd.write(response.content)
+        # convert to tiff
+        convert_jpeg_to_tiff(self.path_img, self.path_img.replace(".jpg", ".tiff"))
+        convert_jpeg_to_tiff(self.path_mask, self.path_mask.replace(".jpg", ".tiff"))
+        self.path_img = self.path_img.replace(".jpg", ".tiff")
+        self.path_mask = self.path_mask.replace(".jpg", ".tiff")
 
-    # -------------------------------------------------#
-    #               Test: Image Loading               #
-    # -------------------------------------------------#
+
+    # ------------------------------------------------ #
+    #               Test: Image Loading                #
+    # ------------------------------------------------ #
     def test_load_image(self):
-        print(os.path.exists(self.path_img))
-        wsi, path_tiles_wsi = load_wsi(self.path_img)
+        tile_dir = tempfile.TemporaryDirectory(prefix="tmp.patho-pix.")
+        wsi = load_wsi(self.path_img, tile_dir.name)
         self.assertTrue(np.array_equal(wsi.level_dimensions(level=0),
                                       (15040, 18080)))
 
-    # -------------------------------------------------#
-    #                Test: Mask Loading               #
-    # -------------------------------------------------#
+    # ------------------------------------------------ #
+    #                Test: Mask Loading                #
+    # ------------------------------------------------ #
     def test_load_mask(self):
-        print(os.path.exists(self.path_mask))
-        mask, path_tiles_mask = load_mask(self.path_mask)
+        tile_dir = tempfile.TemporaryDirectory(prefix="tmp.patho-pix.")
+        mask = load_mask(self.path_mask, tile_dir.name)
         self.assertTrue(np.array_equal(mask.level_dimensions(level=0),
-                                      (15104, 18176)))
+                                      (15040, 18080)))
