@@ -19,6 +19,7 @@ import requests
 # Internal libraries
 from patho_pix.io import load_mask, load_wsi
 from patho_pix.tiling import tile_wsi
+from patho_pix.utils import convert_jpeg_to_tiff
 
 # ---------------------------------------------------- #
 #                    Configuration                     #
@@ -60,6 +61,12 @@ class TileTEST(unittest.TestCase):
             self.path_mask = os.path.join(self.tmp_data.name, "mask.jpg")
             with open(self.path_mask, "wb") as fd:
                 fd.write(response.content)
+
+        # convert to tiff
+        convert_jpeg_to_tiff(self.path_img, self.path_img.replace(".jpg", ".tiff"))
+        convert_jpeg_to_tiff(self.path_mask, self.path_mask.replace(".jpg", ".tiff"))
+        self.path_img = self.path_img.replace(".jpg", ".tiff")
+        self.path_mask = self.path_mask.replace(".jpg", ".tiff")
 
     # ------------------------------------------------ #
     #                Test: Image Tiling                #
