@@ -24,10 +24,10 @@ from patho_pix.utils import convert_jpeg_to_tiff
 #                    Configuration                     #
 # ---------------------------------------------------- #
 # Download links
-url_mask = "https://glioblastoma.alleninstitute.org/cgi-bin/imageservice?path=" + \
+url_mask = "http://glioblastoma.alleninstitute.org/cgi-bin/imageservice?path=" + \
            "/external/gbm/prod0/0534338827/0534338827_annotation.aff&mime=1" + \
            "&fileout=100122048_1.jpg&zoom=9&top=20224&left=57888&width=15040&height=18048"
-url_img = "https://glioblastoma.alleninstitute.org/cgi-bin/imageservice?path=" + \
+url_img = "http://glioblastoma.alleninstitute.org/cgi-bin/imageservice?path=" + \
           "/external/gbm/prod0/0534338971/0534338971.aff&mime=1&fileout=100125374_2." + \
           "jpg&zoom=9&top=20608&left=55168&width=15040&height=18048"
 
