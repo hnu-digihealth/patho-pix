@@ -77,6 +77,9 @@ jobs:
     - name: Install dependencies
       run: |
         pdm sync -d
+    - name: Install openslide
+      run: |
+        sudo apt -y install libvips-dev
     - name: Generate coverage
       run: |
         pdm cov_report
