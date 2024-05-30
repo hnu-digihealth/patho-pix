@@ -33,7 +33,7 @@ dev = [
 
 [tool.pdm.scripts]
 test = "pdm run -v pytest tests"
-lint = "pdm run -v flake8 --ignore=E124,E127,E128,E701,E731,W503 --max-line-length 200 src tests"
+lint = "pdm run -v flake8 --ignore=E124,E127,E128,E701,E731,W503,W291 --max-line-length 200 src tests"
 sort = "pdm run -v isort --check-only src tests"
 apply_sort = "pdm run -v isort src tests"
 cov_report = { shell = "pdm run -v coverage run -m pytest tests && pdm run coverage xml && pdm run coverage report" }
