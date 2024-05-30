@@ -18,13 +18,9 @@ from histolab.slide import Slide
 from histolab.tile import Tile
 from histolab.tiler import Tiler
 from histolab.types import CoordinatePair
-from histolab.util import (
-    rectangle_to_mask,
-    region_coordinates,
-    regions_from_binary_mask,
-    regions_to_binary_mask,
-    scale_coordinates,
-)
+from histolab.util import (rectangle_to_mask, region_coordinates,
+                           regions_from_binary_mask, regions_to_binary_mask,
+                           scale_coordinates)
 
 logger = logging.getLogger("tiler")
 
