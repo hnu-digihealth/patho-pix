@@ -18,24 +18,26 @@ import requests
 # patho_pix
 # Internal libraries
 from patho_pix.io import load_mask, load_wsi
-from patho_pix.tiling import tile_wsi
+from patho_pix.tiling import tile_wsi, tile_wsi_mask
 from patho_pix.utils import convert_jpeg_to_tiff
 
 # ---------------------------------------------------- #
 #                    Configuration                     #
 # ---------------------------------------------------- #
 # Download links
-url_img = "http://glioblastoma.alleninstitute.org/cgi-bin/imageservice?" + \
-          "path=/external/gbm/prod16/0534336905/0534336905_boundary.aff&mime=1&fileout=266289986_2.jpg&zoom=9" + \
-          "&top=22304&left=25024&width=15040&height=18080"
-url_mask = "http://glioblastoma.alleninstitute.org/cgi-bin/imageservice?" + \
-           "path=/external/gbm/prod16/0534336761/0534336761_annotation.aff&mime=1&fileout=265854792_1.mask.jpg" +\
-           "&zoom=9&top=23424&left=18112&width=15104&height=18176"
+url_mask = "https://glioblastoma.alleninstitute.org/cgi-bin/imageservice?path=" + \
+           "/external/gbm/prod0/0534338827/0534338827_annotation.aff&mime=1" + \
+           "&fileout=100122048_1.jpg&zoom=9&top=20224&left=57888&width=15040&height=18048"
+url_img = "https://glioblastoma.alleninstitute.org/cgi-bin/imageservice?path=" + \
+          "/external/gbm/prod0/0534338971/0534338971.aff&mime=1&fileout=100125374_2." + \
+          "jpg&zoom=9&top=20608&left=55168&width=15040&height=18048"
+
 path_img = None
 path_mask = None
 
-debug_path_img = "../data/dummy_wsi_01.image.jpg"
-debug_path_mask = "../data/dummy_wsi_01.mask.jpg"
+# Internal debugging links
+# debug_path_img = "../data/dummy_wsi_01.image.jpg"
+# debug_path_mask = "../data/dummy_wsi_01.mask.jpg"
 
 
 # ---------------------------------------------------- #
@@ -68,18 +70,25 @@ class TileTEST(unittest.TestCase):
         self.path_img = self.path_img.replace(".jpg", ".tiff")
         self.path_mask = self.path_mask.replace(".jpg", ".tiff")
 
+
     # ------------------------------------------------ #
     #                Test: Image Tiling                #
     # ------------------------------------------------ #
     def test_tile_image(self):
-        wsi, path_tiles_wsi = load_wsi(self.path_img)
+        tile_dir = tempfile.TemporaryDirectory(prefix="tmp.patho-pix.")
+        wsi = load_wsi(self.path_img, tile_dir.name)
         tile_wsi(wsi)
+        print(os.listdir(tile_dir.name))
+        print(len(os.listdir(tile_dir.name)))
+        self.assertEqual(len(os.listdir(tile_dir.name)), 25)
 
     # -------------------------------------------------#
-    #                Test: Mask Loading               #
+    #            Test: Image and Mask Tiling           #
     # -------------------------------------------------#
-    def test_load_mask(self):
-        print(os.path.exists(self.path_mask))
-        mask, path_tiles_mask = load_mask(self.path_mask)
-        self.assertTrue(np.array_equal(mask.level_dimensions(level=0),
-                                      (15104, 18176)))
+    def test_load_image_and_mask(self):
+        tile_dir_img = tempfile.TemporaryDirectory(prefix="tmp.patho-pix.")
+        tile_dir_mask = tempfile.TemporaryDirectory(prefix="tmp.patho-pix.")
+        wsi = load_wsi(self.path_img, tile_dir_img.name)
+        mask = load_mask(self.path_mask, tile_dir_mask.name)
+        tile_wsi_mask(wsi, mask)
+        self.assertEqual(len(os.listdir(tile_dir_img.name)), 25)
