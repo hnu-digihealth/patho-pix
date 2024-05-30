@@ -18,16 +18,15 @@ from patho_pix.utils import AwesomeTiler
 # ---------------------------------------------------- #
 def tile_wsi(wsi, tile_size=(1024, 1024)):
     # Initialize Tiler
-    wsi_tiler = GridTiler(tile_size=tile_size,
-                            check_tissue=True,
-                            tissue_percent=80.0,
-                            prefix="patho-fix.",
-                            suffix=".png"
-                            )
+    wsi_tiler = GridTiler(
+        tile_size=tile_size,
+        check_tissue=True,
+        tissue_percent=80.0,
+        prefix="patho-fix.",
+        suffix=".png",
+    )
     # extract tile
-    wsi_tiler.extract(wsi,
-                      extraction_mask=TissueMask()
-                      )
+    wsi_tiler.extract(wsi, extraction_mask=TissueMask())
 
 
 # ---------------------------------------------------- #
@@ -35,13 +34,13 @@ def tile_wsi(wsi, tile_size=(1024, 1024)):
 # ---------------------------------------------------- #
 def tile_wsi_mask(wsi_img, wsi_label, tile_size=(1024, 1024)):
     # Initialize Tiler
-    wsi_tiler = AwesomeTiler(tile_size=tile_size,
-                             check_tissue=True,
-                             tissue_percent=80.0,
-                             prefix="patho-fix.",
-                             suffix=".png"
-                            )
+    wsi_tiler = AwesomeTiler(
+        tile_size=tile_size,
+        check_tissue=True,
+        tissue_percent=80.0,
+        prefix="patho-fix.",
+        suffix=".png",
+    )
     # extract tile
-    wsi_tiler.extract(wsi_img, wsi_label,
-                      extraction_mask=TissueMask()
-                      )
+    metadata = wsi_tiler.extract(wsi_img, wsi_label, extraction_mask=TissueMask())
+    return metadata
