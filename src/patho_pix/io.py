@@ -22,8 +22,8 @@ def load_wsi(path, use_largeimage=True):
     )
     # Load WSI scan via histolab
     wsi_slide = Slide(
-        path=path, 
-        processed_path=pathdir_tiles_img.name, 
+        path=path,
+        processed_path=pathdir_tiles_img.name,
         use_largeimage=use_largeimage
     )
     # Return histolab WSI
@@ -40,8 +40,8 @@ def load_mask(path, use_largeimage=True):
     )
     # Load WSI mask via histolab
     wsi_slide = Slide(
-        path=path, 
-        processed_path=pathdir_tiles_mask.name, 
+        path=path,
+        processed_path=pathdir_tiles_mask.name,
         use_largeimage=use_largeimage
     )
     # Return histolab WSI
