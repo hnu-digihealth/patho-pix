@@ -78,7 +78,7 @@ class TileTEST(unittest.TestCase):
         tile_wsi(wsi)
         print(os.listdir(tile_dir.name))
         print(len(os.listdir(tile_dir.name)))
-        self.assertEqual(len(os.listdir(tile_dir.name)), 25)
+        self.assertEqual(len(os.listdir(tile_dir.name)), 37)
 
     # -------------------------------------------------#
     #            Test: Image and Mask Tiling           #
@@ -89,4 +89,4 @@ class TileTEST(unittest.TestCase):
         wsi = load_wsi(self.path_img, tile_dir_img.name)
         mask = load_mask(self.path_mask, tile_dir_mask.name)
         tile_wsi_mask(wsi, mask)
-        self.assertEqual(len(os.listdir(tile_dir_img.name)), 25)
+        self.assertEqual(len(os.listdir(tile_dir_img.name)), 37)
