@@ -1,6 +1,6 @@
 [project]
 name = "patho-pix"
-version = "0.1.0"
+version = "0.1.1"
 description = "Preprocessing framework for pathological images"
 authors = []
 dependencies = [
