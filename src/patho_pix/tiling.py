@@ -21,7 +21,7 @@ def tile_wsi(wsi, tile_size=(1024, 1024)):
     wsi_tiler = GridTiler(
         tile_size=tile_size,
         check_tissue=True,
-        tissue_percent=80.0,
+        tissue_percent=10.0,
         prefix="patho-fix.",
         suffix=".png",
     )
@@ -37,7 +37,7 @@ def tile_wsi_mask(wsi_img, wsi_label, tile_size=(1024, 1024)):
     wsi_tiler = AwesomeTiler(
         tile_size=tile_size,
         check_tissue=True,
-        tissue_percent=80.0,
+        tissue_percent=10.0,
         prefix="patho-fix.",
         suffix=".png",
     )
