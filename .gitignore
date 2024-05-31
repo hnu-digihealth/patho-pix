@@ -170,5 +170,5 @@ media/test-images/
 
 output/example-test/
 output/test_out/
-
+media/test-images-steps/
 model/checkpoint_106.pth
