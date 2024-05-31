@@ -166,4 +166,4 @@ cython_debug/
 media/test-images/
 output/example-test/
 output/test_out/
-media/test-images-steps/
+demo/patho-pix/

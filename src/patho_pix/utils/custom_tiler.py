@@ -133,7 +133,12 @@ class AwesomeTiler(Tiler):
             mask_tile.save(full_tile_path)
             logger.info(f"\t Mask Tile {tiles_counter} saved: {tile_filename}")
             # Domi edit: access metadata
-            metadata[tile_filename] = [tile.tissue_ratio, self.tile_size, tile_wsi_coords[0]]
+            metadata[tile_filename] = [
+                tile.tissue_ratio,
+                self.tile_size,
+                tile_wsi_coords[0],
+                np.unique(np.array(mask_tile))
+            ]
 
         logger.info(f"{tiles_counter} Grid Tiles have been saved.")
         return metadata
