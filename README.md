@@ -2,31 +2,30 @@
 
 ## Overview
 
-patho-pix is a Python package designed to automate preprocessing of digital pathology images, leveraging existing processing frameworks into a modular pipeline. This package uses raw whole-slide-images (WSIs) and corresponding labels preprocesses the WSI, organizing the input data into ready-to-use tiles and metadata, ensuring high-quality data for further ML-analysis. Patho-pix integrates several key steps, including extraction of tissue regions ommiting background, tiling of the WSI, artifact detection and removal, exportation of tiles and metadata, and color normalization.
+patho-pix is a Python package designed to automate preprocessing of digital pathology images, leveraging existing processing frameworks into a modular pipeline. This package uses raw whole-slide-images (WSIs) and corresponding labels to preprocess the WSIs, It organizes and cleans up the input data into ready-to-use tiles and metadata, ensuring high-quality data for downstream machine learning analysis. Patho-pix integrates several key steps, including extraction of tissue regions ommiting background, tiling of the WSI, color normalization, artifact detection and removal and exportation of the tiles and metadata. 
 
 ## Features
 
 - **Tissue Region Extraction**: Identifies and focuses on tissue-covered regions, excluding the background of the image.
-- **Tiling**: Divides WSIs into tiles of dynamic size.
-- **Artifact Detection**: Identifies and removes tiles with artifacts.
-- **Generative AI**: Enhances image quality by removing artifacts and filling in the missing data (Upcoming feature).
-- **Export Tiles & Metadata**: Saves processed tiles and associated metadata for further use.
+- **Tiling**: Divides WSIs into tiles of dynamic size (i.e. 1024x1024).
 - **Color Normalization**: Color normalization across tiles for consistency.
+- **Artifact Detection**: Identifies and removes tiles with artifacts (Upcoming feature).
+- **Artifact Removal**: The pipeline provides two options to deal with artifacts. Corrupted tiles can either be thrown away and disregarded for further analysis. Alternatively a generative AI can be applied enhancing image quality by removing artifacts and filling in the missing data (Upcoming feature).
+- **Export Tiles & Metadata**: Saves processed tiles and associated metadata for further use.
 
 Please read the [CONTRIBUTING](CONTRIBUTING.md) guide.
 
 ## Pipeline
 
 ![patho-pix Pipeline](./media/patho-pix-pipeline.png)
-## Setup
+## Installation
 
-Install OpenSlide:
-
+For this package OpenSlide is required and needs to be installed first:
 Mac (with homebrew): `brew install openslide`.
 
-Install `pdm`.
+The the package manager `pdm` needs to be installed.
 Then run `pdm install --verbose`.  
-Then install patho-pix: `pip install patho_pix`.
+Then install the package `patho-pix` using `pip install patho_pix`.
 
 ## For VSCode
 
