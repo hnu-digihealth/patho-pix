@@ -17,7 +17,7 @@ patho-pix is a Python package designed to automate preprocessing of digital path
 
 ## Pipeline
 
-![patho-pix Pipeline](./media/patho-pix-pipeline.png)
+![patho-pix Pipeline](https://github.com/hnu-digihealth/patho-pix/blob/main/media/patho-pix-pipeline.png?raw=true)
 
 ## Usage
 To use patho pix you need to manually install the OpenSlide C-library as a dependency.
