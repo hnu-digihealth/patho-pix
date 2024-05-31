@@ -31,7 +31,8 @@ class NormalizationTests(unittest.TestCase):
 
     def test_normalize_tile_reinhard(self):
         # Test Reinhard stain normalization
-        self.normalized_tile = normalize_tile_reinhard(self.test_img)
+        path_target_img = "./output/test_out/target_img.tiff"
+        self.normalized_tile = normalize_tile_reinhard(self.test_img, path_target_img)
         print(type(self.normalized_tile))
         self.assertIsInstance(self.normalized_tile, Image.Image)
         # Save image in output/test_out for inspection
@@ -39,7 +40,8 @@ class NormalizationTests(unittest.TestCase):
 
     def test_normalize_tile_macenko(self):
         # Test Macenko stain normalization
-        self.normalized_tile = normalize_tile_macenko(self.test_img)
+        path_target_img = "./output/test_out/target_img.tiff"
+        self.normalized_tile = normalize_tile_macenko(self.test_img, path_target_img)
         self.assertIsInstance(self.normalized_tile, Image.Image)
         # Save image in output/test_out for inspection
         self.normalized_tile.save("./output/test_out/normalized_tile_macenko.tiff")
