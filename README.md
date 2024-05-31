@@ -2,7 +2,7 @@
 
 ## Overview
 
-patho-pix is a Python package designed to automate preprocessing of digital pathology images, leveraging existing processing frameworks into a modular pipeline. This package uses raw whole-slide-images (WSIs) and corresponding labels to preprocess the WSIs, It organizes and cleans up the input data into ready-to-use tiles and metadata, ensuring high-quality data for downstream machine learning analysis. Patho-pix integrates several key steps, including extraction of tissue regions ommiting background, tiling of the WSI, color normalization, artifact detection and removal and exportation of the tiles and metadata. 
+patho-pix is a Python package designed to automate preprocessing of digital pathology images, leveraging existing processing frameworks into a modular pipeline. This package uses raw whole-slide-images (WSIs) and corresponding labels to preprocess the WSIs, It organizes and cleans up the input data into ready-to-use tiles and metadata, ensuring high-quality data for downstream machine learning analysis. Patho-pix integrates several key steps, including extraction of tissue regions ommiting background, tiling of the WSI, color normalization, artifact detection and removal and exportation of the tiles and metadata.
 
 ## Features
 
@@ -24,7 +24,7 @@ For this package OpenSlide is required and needs to be installed first:
 Mac (with homebrew): `brew install openslide`.
 
 The the package manager `pdm` needs to be installed.
-Then run `pdm install --verbose`.  
+Then run `pdm install --verbose`.
 Then install the package `patho-pix` using `pip install patho_pix`.
 
 ## For VSCode
@@ -32,13 +32,8 @@ Then install the package `patho-pix` using `pip install patho_pix`.
 Install `Docker Desktop` and VS Code Extension [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
 
 
-
-
 # patho-pix
 [![coverage](https://codecov.io/gh/hnu-digihealth/patho-pix/graph/badge.svg?token=3OCS8010KL)](https://codecov.io/gh/hnu-digihealth/patho-pix)
 [![tests](https://github.com/hnu-digihealth/patho-pix/actions/workflows/test.yaml/badge.svg)](https://github.com/hnu-digihealth/patho-pix/actions/workflows/test.yaml)
 
 Please read the [CONTRIBUTING](CONTRIBUTING.md) guide.
-
-
-

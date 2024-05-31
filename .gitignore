@@ -161,14 +161,9 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-# Mac OS
-
+### OWN
 .DS_Store
-
 media/test-images/
-
-
 output/example-test/
 output/test_out/
 media/test-images-steps/
-model/checkpoint_106.pth
