@@ -136,7 +136,7 @@ class AwesomeTiler(Tiler):
             metadata[tile_filename] = [
                 tile.tissue_ratio,
                 self.tile_size,
-                tile_wsi_coords[0],
+                tile_wsi_coords[0:2],
                 np.unique(np.array(mask_tile))
             ]
 
