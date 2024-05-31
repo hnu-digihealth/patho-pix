@@ -1,4 +1,4 @@
-# PxMD
+# PMD
 
 The project uses [PDM](https://pdm-project.org/latest/) for its development and package handling.
 
